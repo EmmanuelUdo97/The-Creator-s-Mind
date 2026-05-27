@@ -1,0 +1,346 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body {
+  font-family: Arial, sans-serif;
+
+  background: #0b0b0f;
+
+  color: white;
+
+  line-height: 1.7;
+
+  overflow-x: hidden;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1,
+h2,
+h3 {
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+p {
+  color: rgba(255,255,255,0.75);
+
+  max-width: 750px;
+
+  margin: 0 auto;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 18px 40px;
+
+  background: rgba(10,10,15,0.85);
+
+  backdrop-filter: blur(10px);
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1000;
+
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* LOGO */
+
+.logo {
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: white;
+}
+
+/* NAV LINKS */
+
+.nav-links {
+  display: flex;
+
+  gap: 20px;
+
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+
+  color: rgba(255,255,255,0.7);
+
+  font-size: 14px;
+
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-links a.active {
+  color: white;
+
+  border-bottom: 2px solid white;
+
+  padding-bottom: 3px;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  padding: 40px 20px;
+
+  background:
+    radial-gradient(circle at top, #1a1a2e 0%, #0b0b0f 70%);
+}
+
+.hero-content {
+  max-width: 850px;
+}
+
+/* HERO TITLE */
+
+.hero h1 {
+  font-size: 72px;
+
+  line-height: 1.05;
+
+  margin-bottom: 25px;
+}
+
+/* HERO TEXT */
+
+.hero p {
+  font-size: 21px;
+
+  margin-bottom: 35px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.hero-buttons {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+
+  padding: 15px 30px;
+
+  border-radius: 12px;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+/* PRIMARY BUTTON */
+
+.primary-btn {
+  background: white;
+
+  color: black;
+}
+
+.primary-btn:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+}
+
+/* SECONDARY BUTTON */
+
+.secondary-btn {
+  border: 1px solid rgba(255,255,255,0.15);
+
+  color: white;
+}
+
+.secondary-btn:hover {
+  background: rgba(255,255,255,0.08);
+
+  transform: translateY(-4px);
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+  padding: 110px 20px;
+
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 42px;
+
+  margin-bottom: 25px;
+}
+
+.section p {
+  font-size: 20px;
+
+  line-height: 1.9;
+
+  max-width: 850px;
+
+  color: rgba(255,255,255,0.75);
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.cards-container {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 30px;
+
+  margin-top: 50px;
+}
+
+.card {
+  background: rgba(255,255,255,0.04);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  padding: 35px;
+
+  border-radius: 20px;
+
+  width: 320px;
+
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+
+  background: rgba(255,255,255,0.06);
+}
+
+.card h3 {
+  margin-bottom: 15px;
+
+  font-size: 24px;
+}
+
+.card p {
+  font-size: 16px;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    flex-direction: column;
+
+    gap: 15px;
+
+    padding: 20px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .section h2 {
+    font-size: 34px;
+  }
+
+}
+.section {
+  animation: fadeUp 1s ease;
+}
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+}
