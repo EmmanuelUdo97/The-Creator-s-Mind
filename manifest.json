@@ -1,13 +1,12 @@
 {
     "name": "The Creator's Mind - Chrysolite Immanuel",
     "short_name": "Creator's Mind",
-    "description": "A transformational creator movement led by Chrysolite Immanuel (The WHYBoss), focused on turning consumers into intentional creators and scalable value system builders.",
+    "description": "A movement for creators transitioning from consumption to value creation systems.",
     "start_url": "/index.html",
     "scope": "/",
     "display": "standalone",
     "background_color": "#0a0a0a",
     "theme_color": "#0a0a0a",
-    "orientation": "portrait",
     "icons": [
       {
         "src": "/icon-192.png",
