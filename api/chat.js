@@ -22,7 +22,7 @@ export default async function handler(req, res) {
   
           body: JSON.stringify({
   
-            model: 'gpt-4.1-mini',
+            model: 'gpt-4o-mini',
   
             messages: [
   
@@ -68,9 +68,11 @@ export default async function handler(req, res) {
   
       const data = await response.json();
   
+      console.log(data);
+
       const reply =
         data.choices?.[0]?.message?.content ||
-        'Sorry, I could not process that request.';
+        JSON.stringify(data);
   
       res.status(200).json({
         reply
