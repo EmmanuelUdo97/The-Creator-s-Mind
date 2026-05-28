@@ -39,3 +39,63 @@ sections.forEach(section => {
   section.style.transition = "0.6s ease";
   observer.observe(section);
 });
+function toggleChat() {
+
+  const chatbox =
+    document.getElementById('chatbox');
+
+  if (chatbox.style.display === 'flex') {
+    chatbox.style.display = 'none';
+  } else {
+    chatbox.style.display = 'flex';
+  }
+
+}
+
+async function sendMessage() {
+
+  const input =
+    document.getElementById('userInput');
+
+  const messages =
+    document.getElementById('chatMessages');
+
+  const message =
+    input.value.trim();
+
+  if (!message) return;
+
+  messages.innerHTML += `
+    <div class="user-message">
+      ${message}
+    </div>
+  `;
+
+  input.value = '';
+
+  const response = await fetch('/api/chat', {
+
+    method: 'POST',
+
+    headers: {
+      'Content-Type': 'application/json'
+    },
+
+    body: JSON.stringify({
+      message
+    })
+
+  });
+
+  const data = await response.json();
+
+  messages.innerHTML += `
+    <div class="bot-message">
+      ${data.reply}
+    </div>
+  `;
+
+  messages.scrollTop =
+    messages.scrollHeight;
+
+}

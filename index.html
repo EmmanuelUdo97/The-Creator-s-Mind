@@ -233,7 +233,45 @@
         .catch(err => console.log("SW failed", err));
     }
   </script>
+<!-- AI CHAT BUTTON -->
 
+<div class="ai-chat-button" onclick="toggleChat()">
+  AI
+</div>
+
+<!-- AI CHATBOX -->
+
+<div class="ai-chatbox" id="chatbox">
+
+  <div class="chat-header">
+    Creator AI Assistant
+  </div>
+
+  <div class="chat-messages" id="chatMessages">
+
+    <div class="bot-message">
+      Welcome to The Creator's Mind.
+      Ask me anything about the movement,
+      philosophy, community, or courses.
+    </div>
+
+  </div>
+
+  <div class="chat-input-area">
+
+    <input
+      type="text"
+      id="userInput"
+      placeholder="Ask something..."
+    >
+
+    <button onclick="sendMessage()">
+      Send
+    </button>
+
+  </div>
+
+</div>
 </body>
 
 </html>
