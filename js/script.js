@@ -1,17 +1,18 @@
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-  
-      const target = document.querySelector(this.getAttribute("href"));
-  
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth"
-        });
-      }
-    });
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute("href"));
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth"
+      });
+    }
   });
-  const buttons = document.querySelectorAll(".btn");
+});
+
+const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach(btn => {
   btn.addEventListener("click", () => {
@@ -22,6 +23,7 @@ buttons.forEach(btn => {
     }, 100);
   });
 });
+
 const sections = document.querySelectorAll(".section, .card");
 
 const observer = new IntersectionObserver(entries => {
@@ -39,32 +41,26 @@ sections.forEach(section => {
   section.style.transition = "0.6s ease";
   observer.observe(section);
 });
-function toggleChat() {
 
-  const chatbox =
-    document.getElementById('chatbox');
+function toggleChat() {
+  const chatbox = document.getElementById('chatbox');
 
   if (chatbox.style.display === 'flex') {
     chatbox.style.display = 'none';
   } else {
     chatbox.style.display = 'flex';
   }
-
 }
 
 async function sendMessage() {
 
-  const input =
-    document.getElementById('userInput');
+  const input = document.getElementById('userInput');
+  const messages = document.getElementById('chatMessages');
 
-  const messages =
-    document.getElementById('chatMessages');
-
-  const message =
-    input.value.trim();
-
+  const message = input.value.trim();
   if (!message) return;
 
+  // show user message
   messages.innerHTML += `
     <div class="user-message">
       ${message}
@@ -73,29 +69,30 @@ async function sendMessage() {
 
   input.value = '';
 
-  const response = await fetch('/api/chat', {
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message })
+    });
 
-    method: 'POST',
+    const data = await response.json();
 
-    headers: {
-      'Content-Type': 'application/json'
-    },
+    messages.innerHTML += `
+      <div class="bot-message">
+        ${data.reply || "Sorry, I could not process that request."}
+      </div>
+    `;
 
-    body: JSON.stringify({
-      message
-    })
+  } catch (error) {
+    messages.innerHTML += `
+      <div class="bot-message">
+        Network error. Please try again.
+      </div>
+    `;
+  }
 
-  });
-
-  const data = await response.json();
-
-  messages.innerHTML += `
-    <div class="bot-message">
-      ${data.reply}
-    </div>
-  `;
-
-  messages.scrollTop =
-    messages.scrollHeight;
-
+  messages.scrollTop = messages.scrollHeight;
 }
